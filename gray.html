@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未完成的星球 · 灰色</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="gray-page">
+
+    <!-- 全屏城市视频 -->
+    <video class="city-video" autoplay muted loop playsinline>
+        <source src="assets/city.mp4" type="video/mp4">
+    </video>
+
+    <!-- 三个灰色文学按钮 -->
+    <button class="gray-btn btn-mid-left" onclick="openGrayPopup('c1')">
+        ⚙️灰色是我喘不过气的颜色。
+    </button>
+
+    <button class="gray-btn btn-mid-center" onclick="openGrayPopup('c2')">
+        🛠️光被切碎了，风也迷路了。
+    </button>
+
+    <button class="gray-btn btn-mid-right" onclick="openGrayPopup('c3')">
+        ⛓️灰色不是伤，而是需要暂停。
+    </button>
+
+    <!-- 浮窗遮罩 -->
+    <div class="popup-overlay" id="grayPopupOverlay" onclick="closeGrayPopup()"></div>
+
+    <!-- 浮窗主体 -->
+    <div class="popup popup-gray" id="grayPopupBox">
+        <div class="popup-close" onclick="closeGrayPopup()">×</div>
+        <div class="popup-content" id="grayPopupContent"></div>
+    </div>
+
+    <script src="scripts/gray.js"></script>
+    <audio id="bgm-green" src="assets/gleyma.mp3" autoplay loop></audio>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未完成的星球 · 蓝色</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="blue-page">
+
+    <img src="assets/waves.gif" class="waves" alt="waves">
+
+    <!-- 三个文学按钮 -->
+    <button class="blue-btn btn-top-left" onclick="openPopup('p1')">
+        🦋我最初的记忆是一口蓝色的呼吸...
+    </button>
+
+    <button class="blue-btn btn-center" onclick="openPopup('p2')">
+        🪼潮水轻撞着我，让我知道自己活着。
+    </button>
+
+    <button class="blue-btn btn-bottom-right" onclick="openPopup('p3')">
+        🐬蓝色是我最未被打扰的时候。
+    </button>
+
+    <!-- 浮窗遮罩 -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+
+    <!-- 浮窗主体 -->
+    <div class="popup" id="popupBox">
+        <div class="popup-close" onclick="closePopup()">×</div>
+        <div class="popup-content" id="popupContent"></div>
+    </div>
+
+    <script src="scripts/blue.js"></script>
+    <audio id="bgm-green" src="assets/AreYouLost.mp3" autoplay loop></audio>
+</body>
+</html>

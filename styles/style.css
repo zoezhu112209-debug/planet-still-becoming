@@ -1,0 +1,600 @@
+/* 全局基础样式 */
+* {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "SuperCrawler";
+    src: url("../fonts/Super Crawler.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 居中容器 */
+.earth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 地球 GIF 尺寸可调整 */
+.earth {
+    width: 1680px;       /* 你可自调 */
+    height: auto;
+}
+
+/* 地球下方文字 */
+.subtitle {
+    font-size: 72px;
+    letter-spacing: 0.1em;
+    transform: translateY(-70px);
+    font-family: "SuperCrawler", sans-serif;
+}
+
+/* 呼吸灯效：忽明忽暗 */
+.breathe-text {
+    animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0% {
+        opacity: 0.35;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.35;
+    }
+}
+
+/* 四个角按钮的基础样式 */
+.corner-button {
+    position: fixed;
+    padding: 36px 48px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    color: white;
+    font-size: 84px;
+    border-radius: 999px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* 悬停时稍微亮一点，给一点“可点击”的反馈 */
+.corner-button:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* 四个角落的具体位置 */
+.corner-blue {
+    top: 128px;
+    left: 128px;
+}
+
+.corner-green {
+    top: 128px;
+    right: 128px;
+}
+
+.corner-gray {
+    bottom: 128px;
+    left: 128px;
+}
+
+.corner-black {
+    bottom: 128px;
+    right: 128px;
+}
+
+
+/* 蓝色章节页面：全屏背景 + 居中海浪 gif */
+.blue-page {
+    margin: 0;
+    padding: 0;
+    background-color: #000810;   /* 深一点的蓝黑背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 容器居中 */
+.waves-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 海浪 gif：尽量占满空间，但不拉伸、不变形 */
+.waves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;     /* 关键：保持比例 + 完全覆盖背景 */
+    object-position: center center;
+
+    z-index: -1;           /* 让未来文字浮在上面 */
+}
+
+/* 蓝色页面按钮整体样式 */
+.blue-btn {
+    position: fixed;
+    padding: 14px 28px;
+    font-size: 22px;
+    color: #e9f7ff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 18px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(0, 160, 255, 0.6);
+
+    /* 呼吸 + 浮动动画 */
+    animation: float 3.5s ease-in-out infinite, glow 2.8s ease-in-out infinite alternate;
+
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+/* 悬停效果：稍微亮一点 + 轻轻抬起 */
+.blue-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-6px);
+}
+
+/* 按钮漂浮动画（上下轻轻浮动） */
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* 呼吸光晕效果 */
+@keyframes glow {
+    0%   { box-shadow: 0 0 6px rgba(0, 180, 255, 0.4); }
+    100% { box-shadow: 0 0 16px rgba(0, 200, 255, 0.7); }
+}
+
+/* 左上角 */
+.btn-top-left {
+    top: 150px;
+    left: 150px;
+}
+
+/* 居中 */
+.btn-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 右下角 */
+.btn-bottom-right {
+    bottom: 60px;
+    right: 50px;
+}
+
+/* 浮窗遮罩 */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 浮窗主体：玻璃拟态 + 漂浮感 */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 70vw;
+    max-width: 720px;
+    padding: 32px;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #e9f7ff;
+    font-size: 20px;
+    line-height: 1.7;
+    white-space: pre-line;
+
+    transform: translate(-50%, -45%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.35s ease;
+}
+
+.popup.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 关闭按钮 */
+.popup-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.popup-close:hover {
+    opacity: 1;
+}
+
+/* 绿色页面：全屏森林背景 */
+.green-page {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: #000; /* 先用黑色避免加载闪白 */
+}
+
+/* 森林 GIF 占满整个页面 */
+.forest {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;      /* 保持比例 → 覆盖整个屏幕 */
+    object-position: center center;
+
+    z-index: -1;            /* 方便以后加内容在前景 */
+}
+
+/* 绿色页面的按钮：叶片风格 + 微风动画 */
+.green-btn {
+    position: fixed;
+    padding: 14px 26px;
+    font-size: 22px;
+    font-weight: 500;
+
+    color: #eaffea;
+    background: rgba(60, 150, 80, 0.22);
+    border: 1px solid rgba(140, 255, 140, 0.35);
+
+    border-radius: 22px 30px 18px 28px; /* 不规则圆角，减少人工痕迹 */
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    cursor: pointer;
+    text-shadow: 0 0 6px rgba(80, 255, 120, 0.45);
+
+    /* 动画：轻轻摇摆 + 光晕呼吸 */
+    animation: leafSwing 3.8s ease-in-out infinite,
+               leafGlow 3s ease-in-out infinite alternate;
+
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+/* Hover：叶片轻轻“翻开” */
+.green-btn:hover {
+    background: rgba(80, 180, 100, 0.32);
+    border-color: rgba(180, 255, 180, 0.6);
+    transform: scale(1.05) rotate(1deg);
+}
+
+/* 微风摇摆 */
+@keyframes leafSwing {
+    0%   { transform: translateY(0) rotate(0.4deg); }
+    50%  { transform: translateY(-6px) rotate(-0.4deg); }
+    100% { transform: translateY(0) rotate(0.4deg); }
+}
+
+/* 绿色光晕呼吸 */
+@keyframes leafGlow {
+    0%   { box-shadow: 0 0 6px rgba(120, 255, 150, 0.3); }
+    100% { box-shadow: 0 0 16px rgba(150, 255, 180, 0.6); }
+}
+
+/* 按钮位置 */
+.btn-bottom-left {
+    bottom: 160px;
+    left: 140px;
+}
+
+.btn-top-center {
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn-bottom-right {
+    bottom: 160px;
+    right: 140px;
+}
+
+/* 绿色页面的弹窗：颜色略偏绿 + 带一点“生长”感的入场动画 */
+.popup-green {
+    background: rgba(40, 90, 50, 0.45);
+    border: 1px solid rgba(180, 255, 200, 0.6);
+    box-shadow:
+        0 0 20px rgba(80, 255, 140, 0.35),
+        0 0 60px rgba(60, 180, 110, 0.25);
+}
+
+/* 让绿色弹窗有一点从下方“长上来”的味道 */
+.green-page .popup {
+    transform: translate(-50%, -40%) scale(0.9);
+}
+
+.green-page .popup.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 灰色章节：全屏城市视频背景 */
+.gray-page {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: #000; /* 视频加载前避免闪白 */
+}
+
+/* 视频充满整个屏幕（保持比例、不拉伸） */
+.city-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;          /* 保持比例 → 自动裁掉多余部分 */
+    object-position: center;    /* 始终居中 */
+
+    z-index: -1;                /* 为之后的按钮/文字留空间 */
+}
+
+/* 灰色页面按钮：金属标签风格 + 轻微抖动 */
+.gray-btn {
+    position: fixed;
+    padding: 10px 22px;
+    font-size: 20px;
+    color: #f5f5f5;
+
+    background: rgba(15, 15, 18, 0.7);
+    border: 1px solid rgba(200, 200, 210, 0.5);
+
+    border-radius: 999px;
+    cursor: pointer;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+
+    /* 灰色的“疲惫呼吸”和轻微抖动 */
+    animation: grayPulse 3s ease-in-out infinite,
+               grayShiver 5.5s ease-in-out infinite;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.gray-btn:hover {
+    background: rgba(40, 40, 45, 0.9);
+    border-color: rgba(230, 230, 240, 0.9);
+    transform: translateY(-2px);
+}
+
+/* 左中、中间、右中位置 */
+.btn-mid-left {
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+}
+
+.btn-mid-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-mid-right {
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+}
+
+/* 灰色按钮：轻微呼吸 */
+@keyframes grayPulse {
+    0%   { box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); opacity: 0.7; }
+    50%  { box-shadow: 0 0 14px rgba(30, 30, 35, 0.9); opacity: 1; }
+    100% { box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); opacity: 0.7; }
+}
+
+/* 灰色按钮：偶尔轻微晃动（像疲惫的机器） */
+@keyframes grayShiver {
+    0%   { transform: translateY(-50%) translateX(0); }
+    45%  { transform: translateY(-50%) translateX(0); }
+    50%  { transform: translateY(calc(-50% - 1px)) translateX(1px); }
+    55%  { transform: translateY(calc(-50% + 1px)) translateX(-1px); }
+    60%  { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(0); }
+}
+
+/* 灰色弹窗：更冷、更硬，像雾中的玻璃面板 */
+.popup-gray {
+    background: rgba(10, 10, 15, 0.78);
+    border: 1px solid rgba(200, 200, 210, 0.6);
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.9),
+        0 0 80px rgba(0, 0, 0, 0.9);
+    color: #f2f2f2;
+}
+
+/* 灰色页面：弹窗像从雾里慢慢“显现” */
+.gray-page .popup {
+    transform: translate(-50%, -48%) scale(0.92);
+}
+
+.gray-page .popup.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 黑色页面：背景铺满污染动图 */
+.black-page {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: #000; /* 避免加载时闪白 */
+}
+
+/* pollution.webp 全屏播放，不变形，居中 */
+.pollution-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;        /* 保持比例，裁剪超出的部分 */
+    object-position: center;
+
+    z-index: -1;
+}
+
+/* 黑色按钮：黑暗中的微光 */
+.black-btn {
+    position: fixed;
+    padding: 12px 26px;
+    font-size: 22px;
+
+    color: rgba(255, 255, 255, 0.88);
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 999px;
+    cursor: pointer;
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+
+    /* 微光闪烁 */
+    animation: blackGlow 4s ease-in-out infinite, blackFlicker 8s infinite;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.black-btn:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* 左下 */
+.btn-black-left {
+    bottom: 8%;
+    left: 6%;
+}
+
+/* 正中间 */
+.btn-black-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 右上 */
+.btn-black-right {
+    top: 8%;
+    right: 6%;
+}
+
+@keyframes blackGlow {
+    0%   { opacity: 0.55; box-shadow: 0 0 6px rgba(255, 255, 255, 0.15); }
+    50%  { opacity: 1; box-shadow: 0 0 14px rgba(255, 255, 255, 0.4); }
+    100% { opacity: 0.55; box-shadow: 0 0 6px rgba(255, 255, 255, 0.15); }
+}
+
+/* 偶尔闪一下的效果（很轻微）*/
+@keyframes blackFlicker {
+    0%,47%,100% { filter: brightness(1); }
+    48% { filter: brightness(0.75); }
+}
+
+/* 黑色弹窗：从黑暗中亮起来 */
+.popup-black {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.92);
+
+    box-shadow:
+        0 0 60px rgba(0, 0, 0, 1),
+        0 0 140px rgba(0, 0, 0, 1);
+
+    transform: translate(-50%, -48%) scale(0.85);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.popup-black.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.signature {
+    position: fixed;
+    bottom: 12px;
+    right: 16px;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-family: 'SuperCrawler', sans-serif; /* 如果你想用你的艺术字体 */
+    letter-spacing: 0.05em;
+    animation: signatureFade 3s ease-in-out infinite alternate;
+}
+
+/* 轻微闪烁呼吸效果 */
+@keyframes signatureFade {
+    from { opacity: 0.5; }
+    to   { opacity: 1; }
+}

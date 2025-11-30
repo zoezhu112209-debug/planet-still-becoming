@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未完成的星球 · 绿色</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="green-page">
+
+    <img src="assets/forest.gif" class="forest" alt="forest">
+    <!-- 三个绿色文学按钮 -->
+    <button class="green-btn btn-bottom-left" onclick="openGreenPopup('g1')">
+        🦜生命在这里努力重来。
+    </button>
+
+    <button class="green-btn btn-top-center" onclick="openGreenPopup('g2')">
+        🍏绿色替我修补来不及愈合的地方。
+    </button>
+
+    <button class="green-btn btn-bottom-right" onclick="openGreenPopup('g3')">
+        🌱生长是一种安静的坚持。
+    </button>
+
+    <!-- 浮窗遮罩 -->
+    <div class="popup-overlay" id="greenPopupOverlay" onclick="closeGreenPopup()"></div>
+
+    <!-- 浮窗主体 -->
+    <div class="popup popup-green" id="greenPopupBox">
+        <div class="popup-close" onclick="closeGreenPopup()">×</div>
+        <div class="popup-content" id="greenPopupContent"></div>
+    </div>
+
+    <script src="scripts/green.js"></script>
+    <audio id="bgm-green" src="assets/夏Style.mp3" autoplay loop></audio>
+</body>
+</html>

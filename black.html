@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未完成的星球 · 黑色</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="black-page">
+
+    <!-- 全屏污染动画 -->
+    <img src="assets/pollution.webp" alt="pollution" class="pollution-bg">
+
+    <!-- 黑色按钮：三处微光 -->
+    <button class="black-btn btn-black-left" onclick="openBlackPopup('b1')">
+        👁️‍🗨️这里藏着我最深的沉默。
+    </button>
+
+    <button class="black-btn btn-black-center" onclick="openBlackPopup('b2')">
+        💣黑色不是绝望，而是无法再假装没事。
+    </button>
+
+    <button class="black-btn btn-black-right" onclick="openBlackPopup('b3')">
+        ⚫️最深的黑里，有时也会冒出一点亮。
+    </button>
+
+    <!-- 浮窗遮罩 -->
+    <div class="popup-overlay" id="blackOverlay" onclick="closeBlackPopup()"></div>
+
+    <!-- 浮窗 -->
+    <div class="popup popup-black" id="blackPopup">
+        <div class="popup-close" onclick="closeBlackPopup()">×</div>
+        <div class="popup-content" id="blackPopupContent"></div>
+    </div>
+
+    <script src="scripts/black.js"></script>
+    <audio id="bgm-green" src="assets/LonelyDay.mp3" autoplay loop></audio>
+</body>
+</html>
